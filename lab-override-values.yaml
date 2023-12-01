@@ -1,0 +1,30 @@
+# OpenTelemetry deploy override values specific for lab minikube setup. 
+# Use this in conjuction with the OpenTelemetry Demo helm charts ... 
+# `helm -n otel-demo install my-otel-demo open-telemetry/opentelemetry-demo -f lab-override-values.yaml`
+#
+
+components:
+  frontend:
+    envOverrides:
+      - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+        value: https://trg.otel.demo/v1/traces
+
+  frontendProxy:
+    ingress:
+      enabled: true
+      hosts:
+        - host: trg.otel.demo
+          paths:
+            - path: /
+              pathType: Prefix
+              port: 8080
+
+opentelemetry-collector:
+  ingress:
+    enabled: true
+    hosts:
+      - host: otel-demo-collector.otel.demo
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 4318
