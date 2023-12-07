@@ -23,7 +23,7 @@ opentelemetry-collector:
   ingress:
     enabled: true
     hosts:
-      - host: otel-demo-collector.otel.demo
+      - host: trg.otel.demo
         paths:
           - path: /
             pathType: Prefix
