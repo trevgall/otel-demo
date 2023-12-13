@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: opentelemetry-demo-otelcol
+  name: my-otel-demo-otelcol
   namespace: otel-demo
   labels:
     app.kubernetes.io/name: otelcol
